@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,11 +13,17 @@ Route::get('/task', function () {
     ]);
 })->name('tasks.index');
 
+Route::view('/tasks/create', 'create')->name('tasks.create');
+
 Route::get('/task/{id}', function($id)  {
     return view ('show',
             ['task' => App\Models\Task::findOrFail($id)
         ]);
 })->name('tasks.show');
+
+Route::post('/tasks', function (Request $request) {
+    dd($request->all());
+})->name('tasks.store');
 
 //Route::get('/xxx', function() {
 //    return('Hello World');
