@@ -16,20 +16,20 @@
         @csrf
         <div>
             <label for="title">Title</label>
-            <input text="text" name="title" id="title"/>
+            <input text="text" name="title" id="title" value="{{ old('title') }}"/>
             @error('title')
             <p class="error-message">{{ $message }}</p>
             @enderror
         </div>
         <div>
             <label>Description</label>
-            <textarea name="description" id="description" rows="5"></textarea>
+            <textarea name="description" id="description" rows="5">{{ old('description') }}</textarea>
             @error('description')
             <p class="error-message">{{ $message }}</p>
             @enderror
         </div>
         <div>
-            <textarea name="long_description" id="long_description" rows="10"></textarea>
+            <textarea name="long_description" id="long_description" rows="10">{{ old('long_description') }}</textarea>
             @error('long_description')
             <p class="error-message">{{ $message }}</p>
             @enderror
