@@ -10,22 +10,22 @@ Route::get( '/', function () {
     return redirect()->route( 'tasks.index' );
 } );
 
-Route::get( '/task', function () {
+Route::get( '/tasks', function () {
     return view( 'index', [
-        'tasks' => Task::latest()->get()
+        'tasks' => Task::latest()->paginate(10)
     ] );
 } )->name( 'tasks.index' );
 
 Route::view( '/tasks/create', 'create' );
 
-Route::get( '/task/{task}/edit', function ( Task $task ) {
+Route::get( '/tasks/{task}/edit', function ( Task $task ) {
     return view( 'edit',
         [
             'task' => $task
         ] );
 } )->name( 'task.edit' );
 
-Route::get( '/task/{task}', function ( Task $task ) {
+Route::get( '/tasks/{task}', function ( Task $task ) {
     return view( 'show',
         [
             'task' => $task
