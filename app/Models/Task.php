@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Task extends Model {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'long_description'];
+
+    protected $fillable = [ 'title', 'description', 'long_description' ];
+
+    public function toggleComplete() {
+        echo "Task updated successfully";
+
+        $this->completed = !$this->completed;
+        $this->save();
+    }
 }
